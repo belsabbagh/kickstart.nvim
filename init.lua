@@ -900,17 +900,17 @@ require('lazy').setup({
       vim.cmd.colorscheme 'dracula'
     end,
   },
-  {
-    'nvim-lualine/lualine.nvim',
-    opts = {
-      options = {
-        theme = vim.g.colors_name,
-        refresh = {
-          statusline = 1000,
-        },
-      },
-    },
-  },
+  -- {
+  --   'nvim-lualine/lualine.nvim',
+  --   opts = {
+  --     options = {
+  --       theme = vim.g.colors_name,
+  --       refresh = {
+  --         statusline = 1000,
+  --       },
+  --     },
+  --   },
+  -- },
   {
     'kdheepak/lazygit.nvim',
     lazy = true,
