@@ -30,6 +30,8 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<C-Tab>', ':bnext<CR>', { desc = 'Move focus to the next buffer', noremap = true })
+vim.keymap.set('n', '<C-S-Tab>', ':bprevious<CR>', { desc = 'Move focus to the previous buffer', noremap = true })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -157,7 +159,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Find existing [B]uffers' })
 
       vim.keymap.set('n', '<leader>sg', function()
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -178,7 +180,13 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
-
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true,
+    -- use opts = {} for passing setup options
+    -- this is equivalent to setup({}) function
+  },
   {
 
     'folke/lazydev.nvim',
@@ -214,21 +222,13 @@ require('lazy').setup({
           end
 
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-
           map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-
           map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-
           map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-
           map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
-
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
@@ -444,13 +444,11 @@ require('lazy').setup({
         transparent = false,
         on_colors = function(colors, color)
           return {
-
             mycolor = '#ffffff',
           }
         end,
         on_highlights = function(colors, color)
           return {
-
             Normal = { fg = colors.mycolor },
           }
         end,
