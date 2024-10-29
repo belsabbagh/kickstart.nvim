@@ -32,9 +32,10 @@ return {
 
       python = { 'isort', 'black' },
 
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
+      javascript = { 'prettier', stop_after_first = true },
+      typescript = { 'prettier', stop_after_first = true },
 
-      vue = { 'prettier', 'prettierd', stop_after_first = true },
+      vue = { 'prettier', stop_after_first = true },
       php = { 'intelephense', stop_after_first = true },
     },
     formatters = {
@@ -42,6 +43,10 @@ return {
         command = 'prettier', -- no need for a specific path as it’s in global npm path
         args = { '--stdin-filepath', vim.fn.shellescape(vim.api.nvim_buf_get_name(0)) },
         stdin = true,
+      },
+      intelephense = {
+        command = 'intelephense',
+        args = {},
       },
     },
   },
