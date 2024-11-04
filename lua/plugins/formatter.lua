@@ -13,27 +13,30 @@ return {
     },
   },
   opts = {
-    notify_on_error = false,
+    notify_on_error = true,
     format_on_save = {
       -- These options will be passed to conform.format()
       timeout_ms = 500,
-      lsp_format = 'fallback',
     },
     formatters_by_ft = {
       lua = { 'stylua' },
 
       python = { 'isort', 'black' },
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      typescript = { 'prettier', stop_after_first = true },
+      javascript = { 'biome', 'prettier', stop_after_first = true },
+      typescript = { 'biome', 'prettier', stop_after_first = true },
 
-      vue = { 'prettier', 'prettierd', stop_after_first = true },
+      vue = { 'biome', 'prettier' },
       php = { 'intelephense', stop_after_first = true },
     },
     formatters = {
-      prettier = {
-        command = 'prettier',
-        args = { '--stdin-filepath', vim.fn.shellescape(vim.api.nvim_buf_get_name(0)) },
+      biome = {
+        meta = {
+          url = 'https://github.com/biomejs/biome',
+          description = 'A toolchain for web projects, aimed to provide functionalities to maintain them.',
+        },
+        command = 'biome',
         stdin = true,
+        args = { 'format', '--stdin-file-path', '$FILENAME' },
       },
       intelephense = {
         command = 'intelephense',

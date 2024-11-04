@@ -79,6 +79,7 @@ return {
           },
         },
       },
+      biome = {},
       volar = {},
       lua_ls = {
 
