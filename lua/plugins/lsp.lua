@@ -82,7 +82,6 @@ return {
       biome = {},
       volar = {},
       lua_ls = {
-
         settings = {
           Lua = {
             completion = {

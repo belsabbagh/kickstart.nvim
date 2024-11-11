@@ -24,9 +24,9 @@ return {
       python = { 'isort', 'black' },
       javascript = { 'biome', 'prettier', stop_after_first = true },
       typescript = { 'biome', 'prettier', stop_after_first = true },
-
+      yaml = { 'prettier' },
       vue = { 'biome', 'prettier' },
-      php = { 'intelephense', stop_after_first = true },
+      php = { 'pint', 'intelephense', stop_after_first = true },
     },
     formatters = {
       biome = {
