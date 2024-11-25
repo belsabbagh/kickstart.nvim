@@ -80,8 +80,16 @@ return {
             },
           },
         },
+        settings = {
+          implicitProjectConfiguration = {
+            checkJs = true,
+            strictNullChecks = true,
+          },
+        },
       },
-      biome = {},
+      biome = {
+        capabilities = capabilities,
+      },
       volar = {},
       lua_ls = {
         settings = {

@@ -25,6 +25,8 @@ return {
       javascript = { 'biome', 'prettier', stop_after_first = true },
       typescript = { 'biome', 'prettier', stop_after_first = true },
       yaml = { 'prettier' },
+      rust = { 'rustfmt', lsp_format = 'fallback' },
+      json = { 'biome', 'prettier', stop_after_first = true },
       vue = { 'biome', 'prettier' },
       php = { 'pint', 'intelephense', stop_after_first = true },
     },

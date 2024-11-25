@@ -2,7 +2,6 @@ return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
   dependencies = {
-
     {
       'L3MON4D3/LuaSnip',
       build = (function()
@@ -30,20 +29,13 @@ return {
         end,
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
-
       mapping = cmp.mapping.preset.insert {
-
         ['<C-n>'] = cmp.mapping.select_next_item(),
-
         ['<C-p>'] = cmp.mapping.select_prev_item(),
-
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
-
         ['<C-y>'] = cmp.mapping.confirm { select = true },
-
         ['<C-Space>'] = cmp.mapping.complete {},
-
         ['<C-l>'] = cmp.mapping(function()
           if luasnip.expand_or_locally_jumpable() then
             luasnip.expand_or_jump()
@@ -56,14 +48,11 @@ return {
         end, { 'i', 's' }),
       },
       sources = {
-        {
-          name = 'lazydev',
-
-          group_index = 0,
-        },
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'path' },
+        { name = 'lazydev', priority = 1001 },
+        { name = 'nvim_lsp', priority = 1000 },
+        { name = 'luasnip', priority = 750 },
+        { name = 'buffer', priority = 500 },
+        { name = 'path', priority = 250 },
       },
     }
   end,
