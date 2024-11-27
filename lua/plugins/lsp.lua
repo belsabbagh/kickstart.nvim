@@ -64,7 +64,8 @@ return {
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-
+    local mason_registry = require 'mason-registry'
+    local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
     local servers = {
       rust_analyzer = {
         filetypes = { 'rust' },
@@ -75,8 +76,10 @@ return {
           plugins = {
             {
               name = '@vue/typescript-plugin',
-              location = require('mason-registry').get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server',
-              languages = { 'vue' },
+              location = vue_language_server_path,
+              languages = { 'javascript', 'typescript', 'vue' },
+              configNamespace = 'typescript',
+              enableForWorkspaceTypeScriptVersions = true,
             },
           },
         },
@@ -90,7 +93,27 @@ return {
       biome = {
         capabilities = capabilities,
       },
-      volar = {},
+      volar = {
+        filetypes = { 'vue' },
+        capabilities = capabilities,
+        init_options = {
+          vue = {
+            hybridMode = true,
+          },
+        },
+      },
+      pyright = {
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = 'strict',
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+              diagnosticMode = 'openFilesOnly',
+            },
+          },
+        },
+      },
       lua_ls = {
         settings = {
           Lua = {
