@@ -68,6 +68,7 @@ return {
       typescript = { 'biome' },
       javascriptreact = { 'biome' },
       typescriptreact = { 'biome' },
+      python = { 'ruff', 'mypy' },
       -- Add more filetypes as needed
     }
 

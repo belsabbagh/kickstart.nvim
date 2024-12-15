@@ -103,12 +103,6 @@ return {
           },
         },
       },
-      ruff_lsp = {
-        capabilities = capabilities,
-      },
-      mypy = {
-        capabilities = capabilities,
-      },
       pyright = {
         settings = {
           pyright = {
