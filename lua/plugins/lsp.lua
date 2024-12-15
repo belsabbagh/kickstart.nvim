@@ -69,6 +69,7 @@ return {
     local servers = {
       rust_analyzer = {
         filetypes = { 'rust' },
+        capabilities = capabilities,
       },
       ts_ls = {
         filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
@@ -101,6 +102,9 @@ return {
             hybridMode = true,
           },
         },
+      },
+      ruff_lsp = {
+        capabilities = capabilities,
       },
       pyright = {
         settings = {

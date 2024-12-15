@@ -21,7 +21,7 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
 
-      python = { 'isort', 'black' },
+      python = { 'ruff' },
       javascript = { 'biome', 'prettier', stop_after_first = true },
       typescript = { 'biome', 'prettier', stop_after_first = true },
       yaml = { 'prettier' },
