@@ -106,14 +106,18 @@ return {
       ruff_lsp = {
         capabilities = capabilities,
       },
+      mypy = {
+        capabilities = capabilities,
+      },
       pyright = {
         settings = {
+          pyright = {
+            disableOrganizeImports = true, -- Using Ruff
+          },
           python = {
             analysis = {
-              typeCheckingMode = 'strict',
-              autoSearchPaths = true,
-              useLibraryCodeForTypes = true,
-              diagnosticMode = 'openFilesOnly',
+              ignore = { '*' }, -- Using Ruff
+              typeCheckingMode = 'off', -- Using mypy
             },
           },
         },
