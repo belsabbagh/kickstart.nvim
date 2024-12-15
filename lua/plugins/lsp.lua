@@ -116,6 +116,9 @@ return {
           },
         },
       },
+      gopls = {
+        capabilities = capabilities,
+      },
       lua_ls = {
         settings = {
           Lua = {
