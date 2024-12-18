@@ -79,7 +79,7 @@ return {
               name = '@vue/typescript-plugin',
               location = vue_language_server_path,
               languages = { 'javascript', 'typescript', 'vue' },
-              configNamespace = 'typescript',
+              configNamespace = 'javascript',
               enableForWorkspaceTypeScriptVersions = true,
             },
           },
@@ -92,6 +92,10 @@ return {
         },
       },
       biome = {
+        capabilities = capabilities,
+      },
+      phpactor = {
+        filetypes = { 'php' },
         capabilities = capabilities,
       },
       volar = {
